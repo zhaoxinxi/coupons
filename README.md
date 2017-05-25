@@ -12,7 +12,7 @@ gem 'coupons', github: 'zhaoxinxi/coupons'
 You also need one pagination library. You can choose between [paginate](https://github.com/fnando/paginate) or [kaminari](https://github.com/amatsuda/kaminari), so make sure one of these libs is added to your Gemfile as well.
 需要这两个gem中任选一个，但我实作用kaminari不行，回头再试试。
 ```ruby
-gem 'paginate'  貌似只能用这个，但请注意这个gem和will_paginate有冲突，我直接删了will_paginate，回头有空再试试能不呢改。
+gem 'paginate'  貌似只能用这个，但请注意这个gem和will_paginate有冲突，我直接删了will_paginate，回头有空再试试。
 # or
 gem 'kaminari'  这个貌似是不行。
 ```
@@ -30,6 +30,7 @@ mount Coupons::Engine => '/', as: 'coupons_engine'
 
     $ rake routes
 重启server
+
 3.终端建db
     
     $ rake coupons:install:migrations
