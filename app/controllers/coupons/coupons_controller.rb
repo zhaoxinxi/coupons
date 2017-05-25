@@ -1,6 +1,5 @@
 class Coupons::CouponsController < Coupons::ApplicationController
-  before_action :authenticate_user!
-  before_action :admin_required
+
   def apply
     coupon_code = params[:coupon]
     amount = BigDecimal(params.fetch(:amount, '0.0'))
