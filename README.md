@@ -31,8 +31,9 @@ mount Coupons::Engine => '/', as: 'coupons_engine'
     $ rake routes
 重启server
 
-3.终端建db
+3.建db
     
+    
     $ rake coupons:install:migrations
     $ rake db:migrate
 
