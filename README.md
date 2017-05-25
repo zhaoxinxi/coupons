@@ -41,8 +41,8 @@ And then execute:
     $ rake routes
 重启server
 
-rake coupons:install:migrations
-rake db:migrate
+    $ rake coupons:install:migrations
+    $ rake db:migrate
 
 You can visit `/coupons` to access the dashboard.
 
