@@ -31,7 +31,7 @@ And then execute:
 
 ## Usage
 
-After installing `Coupons`, execute `rake db:migrate` and add the following line to your `config/routes.rb` file.
+After installing `Coupons`,  add the following line to your `config/routes.rb` file.
 
 ```ruby
 mount Coupons::Engine => '/', as: 'coupons_engine'
