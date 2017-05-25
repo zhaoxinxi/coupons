@@ -39,7 +39,12 @@ module Coupons
                     end
 
       @authorizer = proc do |controller|
-        
+        if !current_user.email="admin@test.com"
+          controller.render(
+          text: 'You are not admin',
+          status: 403
+      )
+    end
       end
     end
   end
