@@ -9,6 +9,12 @@ class Coupons::ApplicationController < ActionController::Base
 
   before_action :authorize
 
+    def admin_required
+    if !current_user.admin?
+      redirect_to "/",alert: "你不是管理员"
+    end
+  end
+  
   private
 
   def authorize
