@@ -1,54 +1,44 @@
 # Coupons
 
-[![Build Status](https://img.shields.io/travis/fnando/coupons/master.svg)](https://travis-ci.org/fnando/coupons)
-[![Code Climate](https://img.shields.io/codeclimate/github/fnando/coupons.svg)](https://codeclimate.com/github/fnando/coupons)
-[![Test Coverage](https://img.shields.io/codeclimate/coverage/github/fnando/coupons.svg)](https://codeclimate.com/github/fnando/coupons)
-[![Gem Version](https://img.shields.io/gem/v/coupons.svg)](https://rubygems.org/gems/coupons)
-[![Dependencies](https://img.shields.io/gemnasium/fnando/coupons.svg)](https://rubygems.org/gems/coupons)
-
 Coupons is a Rails engine for creating discount coupons.
 
-## Installation
-
-Add this line to your application's Gemfile:
+## 安装过程
+1.Gemfile:
 
 ```ruby
 gem 'coupons', github: 'zhaoxinxi/coupons'
 ```
 
 You also need one pagination library. You can choose between [paginate](https://github.com/fnando/paginate) or [kaminari](https://github.com/amatsuda/kaminari), so make sure one of these libs is added to your Gemfile as well.
-
+需要这两个gem中任选一个，但我实作用kaminari不行，回头再试试。
 ```ruby
 gem 'paginate'  貌似只能用这个，但请注意这个gem和will_paginate有冲突，我直接删了will_paginate，回头有空再试试能不呢改。
 # or
 gem 'kaminari'  这个貌似是不行。
 ```
-
-And then execute:
+终端
 
     $ bundle
 
 
-## Usage
-
-After installing `Coupons`,  add the following line to your `config/routes.rb` file.
+2.config/routes.rb加入下面这行
 
 ```ruby
 mount Coupons::Engine => '/', as: 'coupons_engine'
 ```
-And then execute:
+终端
 
     $ rake routes
 重启server
-
+3.终端建db
+    
     $ rake coupons:install:migrations
     $ rake db:migrate
 
+然后应该就可以进localhost:3000/coupons页面了。
 You can visit `/coupons` to access the dashboard.
 
-这样应该就可以进coupons页面了。
-
-我按JDstore的设计修改了coupon和application这两个controller实现了admin权限验证。如果要用在别的项目上，这两个的自己再改。
+我按JDstore的设计修改了coupon和application这两个controller实现了admin权限验证。如果要用在别的项目上，这两个需要自己再改。
 
 原gem有以下的坑：gem获取地址，rails5.0不支持，db初始栏位有错，自动rake的bug，部署环境限制，自己加admin验证，will_paginate冲突。这些问题有的在原帖的issue和pull request里，有的是自己蒙着解得，有兴趣的同学可以从头摸索一下，保证非常有趣，各种酸爽😂
 
