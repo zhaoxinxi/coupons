@@ -13,24 +13,21 @@ Coupons is a Rails engine for creating discount coupons.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'coupons'
+gem 'coupons', github: 'zhaoxinxi/coupons'
 ```
 
 You also need one pagination library. You can choose between [paginate](https://github.com/fnando/paginate) or [kaminari](https://github.com/amatsuda/kaminari), so make sure one of these libs is added to your Gemfile as well.
 
 ```ruby
-gem 'paginate'
+gem 'paginate'  貌似只能用这个，但请注意这个gem和will_paginate有冲突，我直接删了will_paginate，回头有空再试试能不呢改。
 # or
-gem 'kaminari'
+gem 'kaminari'  这个貌似是不行。
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install coupons
 
 ## Usage
 
@@ -39,8 +36,28 @@ After installing `Coupons`, execute `rake db:migrate` and add the following line
 ```ruby
 mount Coupons::Engine => '/', as: 'coupons_engine'
 ```
+And then execute:
+
+    $ rake routes
+重启server
+
+rake coupons:install:migrations
+rake db:migrate
 
 You can visit `/coupons` to access the dashboard.
+
+这样应该就可以进coupons页面了。
+
+我按JDstore的设计修改了coupon和application这两个controller实现了admin权限验证。如果要用在别的项目上，这两个的自己再改。
+
+原gem有以下的坑：gem获取地址，rails5.0不支持，db初始栏位有错，自动rake的bug，部署环境限制，自己加admin验证，will_paginate冲突。这些问题有的在原帖的issue和pull request里，有的是自己蒙着解得，有兴趣的同学可以从头摸索一下，保证非常有趣，各种酸爽😂
+
+原作地址https://github.com/fnando/coupons
+
+现在这版基本可以叫JDstore专版了，应该不用再调了，装完玩一玩就可以开始在JDstore的结算进行设计应用了，开工。
+
+下面的内容是这个gem的各种说明，玩的愉快。
+
 
 ## Creating coupons
 
